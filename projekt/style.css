@@ -1,0 +1,27 @@
+body {
+  background-color: powderblue;
+}
+
+#studentsearch {
+	margin-top: 40px;
+	margin-left: 80px;
+	margin-right: 80px;
+	padding: 10px;
+	border: 1px solid black;
+	display: flex;
+    justify-content: space-between;
+	background: #6f8c89;
+}
+
+a {
+	color: white;
+	font-size: 22px;
+}
+
+a:hover {
+	color: blue;
+}
+
+form {
+	display: inline;
+}
