@@ -1,6 +1,5 @@
 -- Wiktoria Woronowicz, model fizyczny poprawiony
 
-
 DROP TABLE IF EXISTS dzielo;
 CREATE TABLE dzielo (
 id_dzielo INT(10) NOT NULL AUTO_INCREMENT,
@@ -9,7 +8,6 @@ tytul VARCHAR(100) NOT NULL,
 autor VARCHAR(100) NOT NULL,
 PRIMARY KEY (id_dzielo)
  ) ENGINE = INNODB DEFAULT CHARSET = UTF8;
-
 
 INSERT INTO dzielo VALUES (1, 'psychologia','Jak nie dać sobą manipulować', 'Petitcollin Christel'), 
 (2, 'horror', 'To', 'Stephen King'),
@@ -32,6 +30,22 @@ INSERT INTO egzemplarz VALUES (1,1, 2019, '514W81DGT3'),
 (3,4, 2006, '74H5J22HBP'),
 (4,3, 1826, '22HG45HJ32'),
 (5,2, 2010, 'HUE229U31Q');
+
+DROP TABLE IF EXISTS wydawnictwo;
+CREATE TABLE wydawnictwo (
+id_wyd INT(10) NOT NULL AUTO_INCREMENT,
+egz_id INT(10) NOT NULL,
+nazwa_wyd VARCHAR(100) NOT NULL,
+CONSTRAINT egzemplarz FOREIGN KEY (egz_id) REFERENCES egzemplarz(id_egz) ON UPDATE CASCADE,
+PRIMARY KEY (id_wyd)
+ ) ENGINE = INNODB DEFAULT CHARSET = UTF8;
+
+INSERT INTO wydawnictwo VALUES (1,1, 'Feeria'), 
+(2,2, 'Mag'),
+(3,4, 'Państwowe Wydawnictwo Naukowe'),
+(4,3, 'Sonia Draga'),
+(5,5, 'Hodder And Stoughton Ltd.');
+
 
 DROP TABLE IF EXISTS studenci;
 CREATE TABLE studenci (
@@ -59,15 +73,17 @@ DROP TABLE IF EXISTS rezerwacja;
 CREATE TABLE rezerwacja (
 id_rezerwacji INT(10) NOT NULL AUTO_INCREMENT,
 student_id INT(10) NOT NULL,
+dzielo_id INT(10) NOT NULL,
 data_rezerwacji TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 data_odebrania TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 data_zwrocenia TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY (id_rezerwacji),
-CONSTRAINT student FOREIGN KEY (student_id) REFERENCES studenci(id_student) ON UPDATE CASCADE
+CONSTRAINT student FOREIGN KEY (student_id) REFERENCES studenci(id_student) ON UPDATE CASCADE,
+CONSTRAINT ksiazka FOREIGN KEY (dzielo_id) REFERENCES dzielo(id_dzielo) ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-INSERT INTO rezerwacja VALUES (1, 5, '2020-02-01 12:25:44', NULL, NULL), (2, 3, '2020-03-21 16:35:04', '2020-03-23 16:35:24',NULL), 
-(3, 2, '2019-12-30 09:11:11','2020-01-01 10:00:00',NULL), (4, 1, '2020-05-04 11:15:14',NULL,NULL), (5, 4, '2019-12-21 11:11:11', '2019-12-22 22:22:22','2019-12-28 13:31:13');
+INSERT INTO rezerwacja VALUES (1, 5,2, '2020-02-01 12:25:44', NULL, NULL), (2, 3,3, '2020-03-21 16:35:04', '2020-03-23 16:35:24',NULL), 
+(3, 2,1, '2019-12-30 09:11:11','2020-01-01 10:00:00',NULL), (4, 1,4, '2020-05-04 11:15:14',NULL,NULL), (5, 4,5, '2019-12-21 11:11:11', '2019-12-22 22:22:22','2019-12-28 13:31:13');
 
 DROP TABLE IF EXISTS detal;
 CREATE TABLE detal (
