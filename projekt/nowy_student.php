@@ -24,4 +24,6 @@ if ($inside) {
 	$q = "INSERT INTO studenci (indeks, imie,nazwisko,miasto,ulica,nr_domu,nr_lokalu,kod_pocztowy) VALUES ($indeks, '$imie', '$nazwisko', '$miasto', '$ulica', '$nr_domu', '$nr_lokalu', '$kod_pocztowy')";
 	$result = mysqli_query($link, $q) or die($link->error);
 }
+$link->close();
+header('Location: index.php');
 ?>
