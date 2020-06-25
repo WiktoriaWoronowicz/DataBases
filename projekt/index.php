@@ -4,6 +4,12 @@ $title = "YourLibrary.pl";
 include 'widok.php';
 
 ?>
+<!DOCTYPE html>
+<html lang="pl"><head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
 <br><br>
 <?php
 $link = new mysqli("localhost", "root", "", "biblioteka");
@@ -11,9 +17,12 @@ if (!$link) die("Nie udało się połączyć.");
 $q = "SELECT * FROM studenci";
 $result = mysqli_query($link, $q) or die($link->error);
 ?>
-<br><br>
+<br>
+<form action="szukaj_studenta.php" method="POST"> 
+		<input type="text" name="search" value="Wpisz indeks lub nazwisko">
+		<input type="submit" value="Szukaj"></form><br><br>
 <div>
-	<table>
+	<table id="studenttable">
 		<thead>
 			<tr>
 				<th>Indeks</th>
@@ -45,3 +54,5 @@ $result = mysqli_query($link, $q) or die($link->error);
 		<?php endwhile; ?>
 	</table>
 </div>
+</body>
+</html>
