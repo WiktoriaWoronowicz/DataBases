@@ -5,20 +5,25 @@ if (!$link) die("Nie udało się połączyć.");
  
 
 if (isset($_POST['submit'])) {
-	$id_dzielo=$_GET['id_dzielo'];
-	$tytul = $_POST['tytul'];
-	$autor = $_POST['autor'];
-	$kategoria = $_POST['kategoria'];
+	$id_student=$_GET['id_student'];
+	$imie = $_POST['imie'];
+	$nazwisko = $_POST['nazwisko'];
+	$indeks = $_POST['indeks'];
+	$miasto = $_POST['miasto'];
+	$ulica = $_POST['ulica'];
+	$nr_domu = $_POST['nr_domu'];
+	$nr_lokalu = $_POST['nr_lokalu'];
+	$kod_pocztowy = $_POST['kod_pocztowy'];
 	
-	$q = "UPDATE dzielo SET tytul='$tytul', autor='$autor',kategoria='$kategoria' WHERE id_dzielo='$id_dzielo'";
+	$q = "UPDATE studenci SET imie='$imie', nazwisko='$nazwisko',indeks='$indeks' WHERE id_student='$id_student'";
 	
 	mysqli_query($link, $q) or die($link->error);
-	header('Location: ksiazki.php');
+	header('Location: uzytkownik.php');
 	
 }
 else {
-	$id_dzielo = $_GET['id_dzielo'];
-	$q = "SELECT * FROM dzielo WHERE id_dzielo='$id_dzielo'";
+	$id_student = $_GET['id_student'];
+	$q = "SELECT * FROM studenci WHERE id_student='$id_student'";
 
 	$result = mysqli_query($link, $q) or die($link->error);
 	$ksiazka = $result->fetch_assoc();

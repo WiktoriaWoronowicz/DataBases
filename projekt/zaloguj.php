@@ -26,7 +26,8 @@ if ($ile_rekordow > 0) {
 	$_SESSION['user'] = $row['login'];
 	
 	$_SESSION['zalogowano'] = true;
-	$_SESSION['id'] = $row['id_kl'];
+	$id_student = $row['id_student'];
+	$_SESSION['id_student'] = $id_student;
 	
 	unset($_SESSION['blad_logowania']);
 	header('Location: uzytkownik.php');

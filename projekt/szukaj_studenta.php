@@ -33,7 +33,7 @@ mysqli_real_escape_string($link, $szukanie))) or die($link->error);
 		
 		<?php
 			while ($row = $result->fetch_assoc()): ?>
-		<tr>
+		<tr><div id "szukaj">
 			<td><?php echo $row['indeks']; ?></td>
 			<td><?php echo $row['imie']; ?></td>
 			<td><?php echo $row['nazwisko']; ?></td>
@@ -42,7 +42,7 @@ mysqli_real_escape_string($link, $szukanie))) or die($link->error);
 			<td><?php echo $row['nr_domu']; ?></td>
 			<td><?php echo $row['nr_lokalu']; ?></td>
 			<td><?php echo $row['kod_pocztowy']; ?></td>
-		</tr>
+		</tr></div>
 		<?php endwhile; ?>
 	</table>
 </div>

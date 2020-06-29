@@ -19,4 +19,4 @@ include 'widok.php';
 ?>
 
 <p style="text-align:center; font-size:22px">Dziękujemy za rejestrację! Możesz się teraz zalogować.</p>
-<p style="text-align:center"><a style="font-size:22px" href="logowanie.php">Zaloguj się!</a></p>
+<p style="text-align:center"><a href="login.php">Zaloguj się!</a></p>

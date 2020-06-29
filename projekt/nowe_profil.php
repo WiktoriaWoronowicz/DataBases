@@ -10,13 +10,15 @@ foreach($_POST as $check => $val) {
 }	
 
 if ($inside) {
-	$nazwa_wyd = $_POST['nazwa_wyd'];
+	$imie = $_POST['imie'];
+	$nazwisko = $_POST['nazwisko'];
+	$indeks = $_POST['indeks'];
 	
 	$link = new mysqli("localhost", "root", "", "biblioteka");
 	if (!$link) die("Nie udało się połączyć.");
-	$q = "INSERT INTO wydawnictwo (nazwa_wyd) VALUES ('$nazwa_wyd')";
+	$q = "INSERT INTO studenci (imie,nazwisko,indeks) VALUES ('$imie', '$nazwisko','$indeks')";
 	$result = mysqli_query($link, $q) or die($link->error);
 }
 $link->close();
-header('Location: wydawnictwa.php');
+header('Location: uzytkownik.php');
 ?>

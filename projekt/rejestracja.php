@@ -80,11 +80,14 @@ if (isset($_POST['login'])) {
 
 include 'widok.php';
 ?>
-
-REJESTRACJA <br><br>
-
-<form method="POST">
-	Podaj wymagane dane logowania * : <br><br>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="style.css"?v<?php echo time();?>">
+</head>
+<form method="POST"><div id = "rejestracja">
+	<div id = "rejestracjatak">
+	<h2>REJESTRACJA</h2>
+	<p>Podaj wymagane dane logowania * :</p> <br>
 	Login * : <br>
 	<input type="text" name="login" value="<?php 
 		if (isset($_SESSION['formularz_login'])) {
@@ -120,9 +123,10 @@ REJESTRACJA <br><br>
 		}	
 	?>
 	Powtórz hasło * : <br>
-	<input type="password" name="haslo2"><br><br>
-
-	Podaj swoje dane (niewymagane do rejestracji) : <br><br>
+	<input type="password" name="haslo2"><br>
+	</div>
+	<div id="rejestracjanie">
+	<p>Podaj swoje dane (niewymagane do rejestracji) :</p> <br>
 
 	Imię: <br>
 	<input type="text" name="imie" value=""><br>
@@ -148,4 +152,5 @@ REJESTRACJA <br><br>
 	<br><input type="submit" value="Zarejestruj się">
 </form>
 <br><br>
-Masz już konto? <a href="logoin.php">Zaloguj się!</a>
+<p>Masz już konto?</p> <a href="login.php">Zaloguj się!</a>
+</div></div>

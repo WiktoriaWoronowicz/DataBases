@@ -4,9 +4,18 @@ $title = "YourLibrary.pl";
 include 'widok.php';
 
 ?>
-
-<br><br>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="style.css"?v<?php echo time();?>">
+</head>
+<br>
 <div id="nowe_dzielo">
+	<h2>DZIEŁA</h2>
+	<h3>Wyszukaj dzieło</h3>
+	<form action="szukaj_ksiazki.php" method="POST"> 
+	<input type="text" name="search" value="Wpisz tytuł lub autora">
+	<input type="submit" value="Szukaj"></form>
+	<h3>Dodaj nowe dzieło</h3>
 	<form action="nowe_dzielo.php" method="POST">
 		<input type="text" name="tytul" value="Tytuł">
 		<input type="text" name="autor" value="Autor">
@@ -33,7 +42,7 @@ $result = mysqli_query($link, $q) or die($link->error);
 <br><br>
 
 <div>
-	<table>
+	<table id="dzielotable">
 		<thead>
 			<tr>
 				<th>Tytuł</th>
@@ -45,12 +54,19 @@ $result = mysqli_query($link, $q) or die($link->error);
 		<?php
 			while ($row = $result->fetch_assoc()): ?>
 		<tr>
+			<?php if (isset($_SESSION['zalogowano']) && $_SESSION['zalogowano'] == true) : ?>
+			<td><?php echo $row['tytul']; ?></td>
+			<td><?php echo $row['autor']; ?></td>
+			<td><?php echo $row['kategoria']; ?></td>
+			<td><?php echo "<a class=\"tytul\" href=\"egzemplarz.php?id_dzielo={$row['id_dzielo']}\"> Sprawdź egzemplarz </a>" ?></td>
+			<?php else: ?>
 			<td><?php echo $row['tytul']; ?></td>
 			<td><?php echo $row['autor']; ?></td>
 			<td><?php echo $row['kategoria']; ?></td>
 			<td><?php echo "<a class=\"tytul\" href=\"edytuj_dzielo.php?id_dzielo={$row['id_dzielo']}\">Edytuj</a>" ?></td>
 			<td><?php echo "<a class=\"tytul\" href=\"usun_ksiazke.php?id_dzielo={$row['id_dzielo']}\">Usuń</a>" ?></td>
 			<td><?php echo "<a class=\"tytul\" href=\"egzemplarz.php?id_dzielo={$row['id_dzielo']}\"> Sprawdź egzemplarz </a>" ?></td>
+			<?php endif; ?>
 		</tr>
 		<?php endwhile; ?>
 	</table>

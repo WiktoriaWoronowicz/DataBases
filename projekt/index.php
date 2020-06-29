@@ -7,7 +7,7 @@ include 'widok.php';
 <!DOCTYPE html>
 <html lang="pl"><head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="style.css"?v<?php echo time();?>">
 </head>
 <body>
 <br><br>

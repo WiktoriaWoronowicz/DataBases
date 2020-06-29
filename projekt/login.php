@@ -8,16 +8,16 @@ if (isset($_SESSION['zalogowano']) && $_SESSION['zalogowano'] == true) {
 $title = "YourLibrary.pl";
 include 'widok.php';
 ?>
-
-<form action="zaloguj.php" method="POST">
+<div id="login">
+<form action="zaloguj.php" method="POST"><br>
 Login: <br>
-<input type="text" name="login"><br>
+<input type="text" name="login"><br><br>
 
 Hasło: <br>
 <input type="password" name="haslo"><br><br>
 <input type="submit" value="Zaloguj">
 </form>
-
+</div>
 <?php
 if (isset($_SESSION['blad_logowania'])) {
 	echo $_SESSION['blad_logowania'];
