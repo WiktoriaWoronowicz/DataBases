@@ -10,6 +10,13 @@ include 'widok.php';
 </head>
 <br>
 <div id="nowe_dzielo">
+	<?php if (isset($_SESSION['zalogowano']) && $_SESSION['zalogowano'] == true) : ?>
+	<h2>DZIEŁA</h2>
+	<h3>Wyszukaj dzieło</h3>
+	<form action="szukaj_ksiazki.php" method="POST"> 
+	<input type="text" name="search" value="Wpisz tytuł lub autora">
+	<input type="submit" value="Szukaj"></form>
+	<?php else: ?>
 	<h2>DZIEŁA</h2>
 	<h3>Wyszukaj dzieło</h3>
 	<form action="szukaj_ksiazki.php" method="POST"> 
@@ -30,12 +37,11 @@ include 'widok.php';
 			<option value="poezja">Poezja</option>
 			<option value="biografia">Biografia</option>
 			<option value="inna">Inna</option></select>
-		<input type="submit" value="Potwierdź">
+		<input type="submit" value="Potwierdź"><?php endif; ?>
 	</form>
 </div>
 <?php
-$link = new mysqli("localhost", "root", "", "biblioteka");
-if (!$link) die("Nie udało się połączyć.");
+require_once "dodatkowe.php";
 $q = "SELECT * FROM dzielo order by tytul";
 $result = mysqli_query($link, $q) or die($link->error);
 ?>

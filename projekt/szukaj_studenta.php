@@ -6,8 +6,7 @@ include 'widok.php';
 $szukanie = $_POST['search'];
 echo $szukanie;
 $szukanie = htmlentities($szukanie, ENT_QUOTES, "UTF-8");
-$link = new mysqli("localhost", "root", "", "biblioteka");
-if (!$link) die("Nie udało się połączyć.");
+require_once "dodatkowe.php";
 
 $result = mysqli_query($link, sprintf("SELECT * FROM studenci WHERE nazwisko like '%%%s%%' OR indeks like '%%%s%%' ORDER BY imie", 
 mysqli_real_escape_string($link, $szukanie),

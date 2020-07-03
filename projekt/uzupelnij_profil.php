@@ -7,7 +7,7 @@ if (!isset($_SESSION['zalogowano'])) {
 
 $title = "Uzupełnianie danych";
 include 'baza.php';
-if (!$link) die("Nie udało się połączyć.");
+require_once "dodatkowe.php";
 
 $id_student = $_SESSION['id_student'];
 $ktore = $_GET['dane'];
@@ -16,7 +16,7 @@ $ktore = $_GET['dane'];
 if(isset($_POST['submit'])) {
 	
 	if ($ktore==1) {
-		if ($_POST['imie']!=""=) {
+		if ($_POST['imie']!="") {
 			$imie = $_POST['imie'];
 			$q = "UPDATE studenci SET imie='$imie' WHERE id_student='$id_student'";
 			mysqli_query($link, $q) or die($link->error);
@@ -25,8 +25,8 @@ if(isset($_POST['submit'])) {
 
 		}
 	}
-	if ($ktore==2) {
-		if ($_POST['nazwisko']!=""=) {
+	else if ($ktore==2) {
+		if ($_POST['nazwisko']!="") {
 			$imie = $_POST['nazwisko'];
 			$q = "UPDATE studenci SET nazwisko='$nazwisko' WHERE id_student='$id_student'";
 			mysqli_query($link, $q) or die($link->error);

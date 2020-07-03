@@ -35,8 +35,8 @@ dzielo_id INT(10) NOT NULL,
 wyd_id INT(10) NOT NULL,
 rok_wydania INT(10) DEFAULT NULL,
 sygnatura VARCHAR(20) NOT NULL UNIQUE,
-CONSTRAINT dziela FOREIGN KEY (dzielo_id) REFERENCES dzielo(id_dzielo) ON UPDATE CASCADE,
-CONSTRAINT wydawnictwa FOREIGN KEY (wyd_id) REFERENCES wydawnictwo(id_wyd) ON UPDATE CASCADE,
+CONSTRAINT dzielo FOREIGN KEY (dzielo_id) REFERENCES dzielo(id_dzielo) ON UPDATE CASCADE,
+CONSTRAINT wydawnictwo FOREIGN KEY (wyd_id) REFERENCES wydawnictwo(id_wyd) ON UPDATE CASCADE,
 PRIMARY KEY (id_egz),
 CONSTRAINT unEgz UNIQUE (dzielo_id, wyd_id)
  ) ENGINE = INNODB DEFAULT CHARSET = UTF8;

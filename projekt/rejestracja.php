@@ -52,9 +52,7 @@ if (isset($_POST['login'])) {
 	$nr_domu = $_POST['nr_domu'];
 	$nr_lokalu = $_POST['nr_lokalu'];
 	$kod_pocztowy = $_POST['kod_pocztowy'];
-
-	$link = new mysqli("localhost", "root", "", "biblioteka");
-	if (!$link) die("Nie udało się połączyć.");
+	require_once "dodatkowe.php";
 	
 	$q1 = "SELECT id_student FROM studenci WHERE login='$login'";
 	$result1 = mysqli_query($link, $q1) or die($link->error);

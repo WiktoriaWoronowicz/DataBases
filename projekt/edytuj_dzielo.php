@@ -1,8 +1,5 @@
 <?php
-
-$link = new mysqli("localhost", "root", "", "biblioteka");
-if (!$link) die("Nie udało się połączyć.");
- 
+require_once "dodatkowe.php";
 
 if (isset($_POST['submit'])) {
 	$id_dzielo=$_GET['id_dzielo'];
@@ -10,7 +7,7 @@ if (isset($_POST['submit'])) {
 	$autor = $_POST['autor'];
 	$kategoria = $_POST['kategoria'];
 	
-	$q = "UPDATE dzielo SET tytul='$tytul', autor='$autor',kategoria='$kategoria' WHERE id_dzielo='$id_dzielo'";
+	$q = "UPDATE dzielo SET tytul='$tytul', autor='$autor', kategoria='$kategoria' WHERE id_dzielo='$id_dzielo'";
 	
 	mysqli_query($link, $q) or die($link->error);
 	header('Location: ksiazki.php');
@@ -27,7 +24,6 @@ else {
 	$autor = $ksiazka['autor'];
 	$kategoria = $ksiazka['kategoria'];
 }
-
 
 include 'widok.php';
 ?>

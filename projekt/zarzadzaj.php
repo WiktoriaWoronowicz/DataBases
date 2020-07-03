@@ -1,20 +1,14 @@
 <?php
 
-session_start();
-if (!isset($_SESSION['zalogowano'])) {
-	header('Location: login.php');
-	exit();
-}
 
-$title = "Twoje zamówienia";
+$title = "Twoje zam�wienia";
 include 'widok.php';
-$id_student = $_SESSION['id_student'];
 require_once "dodatkowe.php";
-$q = "SELECT id_egz,sygnatura,rezerwacja.* FROM rezerwacja JOIN egzemplarz on id_egz=egz_id WHERE student_id='$id_student' ORDER BY data_rezerwacji";
+$q = "SELECT id_egz,sygnatura,rezerwacja.* FROM rezerwacja JOIN egzemplarz on id_egz=egz_id ORDER BY data_rezerwacji";
 $result = mysqli_query($link, $q) or die($link->error);
 
 ?>
-<h2>Twoje rezerwacje</h2>
+<h2>Zamowienia</h2>
 
 <div>
 	<table>
@@ -24,7 +18,7 @@ $result = mysqli_query($link, $q) or die($link->error);
 				<th>Sygnatura egzemplarza</th>
 				<th>Data rezerwacji</th>
 				<th>Data odebrania</th>
-				<th>Data zwrócenia</th>
+				<th>Data zwrocenia</th>
 			</tr>
 		</thead>
 		<?php
@@ -33,9 +27,11 @@ $result = mysqli_query($link, $q) or die($link->error);
 			<td><?php echo $row['id_rezerwacji']; ?></td>
 			<td><?php echo $row['sygnatura']; ?></td>
 			<td><?php echo $row['data_rezerwacji']; ?></td>
-			<td><?php echo $row['data_odebrania']; ?></td>
+			<td></td>
 			<td><?php echo $row['data_zwrocenia']; ?></td>
-			<td><?php echo "<a class=\"tytul\" href=\"anuluj_rezerwacje.php?id_rezerwacji={$row['id_rezerwacji']}\">Anuluj</a>" ?></td><?php else: ?>
+			<td><?php echo "<a class=\"tytul\" href=\"odebrano_rezerwacje.php?id_rezerwacji={$row['id_rezerwacji']}\">Odebrano</a>" ?>
+			<td></td><td><?php echo "<a class=\"tytul\" href=\"anuluj_rezerwacje.php?id_rezerwacji={$row['id_rezerwacji']}\">Anuluj</a>" ?></td>
+			<?php else: ?>
 			<td><?php echo $row['id_rezerwacji']; ?></td>
 			<td><?php echo $row['sygnatura']; ?></td>
 			<td><?php echo $row['data_rezerwacji']; ?></td>

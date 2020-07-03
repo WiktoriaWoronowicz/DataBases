@@ -12,9 +12,8 @@ include 'widok.php';
 <body>
 <br><br>
 <?php
-$link = new mysqli("localhost", "root", "", "biblioteka");
-if (!$link) die("Nie udało się połączyć.");
-$q = "SELECT * FROM studenci";
+require_once "dodatkowe.php";
+$q = "SELECT * FROM studenci order by imie";
 $result = mysqli_query($link, $q) or die($link->error);
 ?>
 <br>
@@ -49,6 +48,7 @@ $result = mysqli_query($link, $q) or die($link->error);
 			<td><?php echo $row['nr_domu']; ?></td>
 			<td><?php echo $row['nr_lokalu']; ?></td>
 			<td><?php echo $row['kod_pocztowy']; ?></td>
+			<td><?php echo "<a class=\"tytul\" href=\"edytuj_studenta.php?id_student={$row['id_student']}\">Edytuj</a>" ?></td>
 			<td><?php echo "<a class=\"tytul\" href=\"usun_studenta.php?id_student={$row['id_student']}\">Usuń</a>" ?></td>
 		</tr>
 		<?php endwhile; ?>

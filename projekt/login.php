@@ -4,7 +4,7 @@ if (isset($_SESSION['zalogowano']) && $_SESSION['zalogowano'] == true) {
 	header('Location: uzytkownik.php');
 	exit();
 }
-
+require_once "dodatkowe.php";
 $title = "YourLibrary.pl";
 include 'widok.php';
 ?>

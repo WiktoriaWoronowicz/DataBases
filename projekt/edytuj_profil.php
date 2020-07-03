@@ -1,8 +1,6 @@
 <?php
 
-$link = new mysqli("localhost", "root", "", "biblioteka");
-if (!$link) die("Nie udało się połączyć.");
- 
+require_once "dodatkowe.php";
 
 if (isset($_POST['submit'])) {
 	$id_student=$_GET['id_student'];

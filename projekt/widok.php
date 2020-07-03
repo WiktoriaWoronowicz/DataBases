@@ -22,6 +22,7 @@ session_start();
 		echo '<a id="awidok" href="index.php"> Studenci </a>';
 		echo '<a id="awidok" href="ksiazki.php"> Książki </a>';
 		echo '<a id="awidok" href="wydawnictwa.php"> Wydawnictwa </a>';
+		echo '<a id="awidok" href="zarzadzaj.php"> Zarządzaj rezerwacjami </a>';
 		echo '<a id="awidok" class="menu" href="rejestracja.php">Rejestracja </a>';
 		echo '<a id="awidok" class="menu" href="login.php">Logowanie </a>';
 }

@@ -6,8 +6,7 @@ if (!isset($_SESSION['zalogowano'])) {
 }
 
 include 'widok.php';
-$link = new mysqli("localhost", "root", "", "biblioteka");
-if (!$link) die("Nie udało się połączyć.");
+require_once "dodatkowe.php";
 $id_student=$_SESSION['id_student'];
 $q="SELECT * FROM studenci where id_student='$id_student'";
 $result = mysqli_query($link, $q);

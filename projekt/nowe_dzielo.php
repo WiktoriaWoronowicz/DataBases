@@ -14,8 +14,7 @@ if ($inside) {
 	$tytul = $_POST['tytul'];
 	$autor = $_POST['autor'];
 	
-	$link = new mysqli("localhost", "root", "", "biblioteka");
-	if (!$link) die("Nie udało się połączyć.");
+	require_once "dodatkowe.php";
 	$q = "INSERT INTO dzielo (tytul,autor,kategoria) VALUES ('$tytul', '$autor','$kategoria')";
 	$result = mysqli_query($link, $q) or die($link->error);
 }
